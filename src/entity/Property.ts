@@ -2,6 +2,8 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColum
 import { Booking } from "./Booking";
 import { Owner } from "./Owner";
 import { Tag } from "./Tag";
+import { Review } from "./Review";
+import { Locality } from "./Locality";
 
 @Entity()
 export class Property {
@@ -27,6 +29,12 @@ export class Property {
 
     @ManyToMany(type => Tag, tag => tag.properties)
     tags: Tag[]
+
+    @OneToMany(type => Review, review=> review.property)
+    reviews:Review[]
+
+    @ManyToMany(type => Locality, locality => locality.properties)
+    localities: Tag[]
 
 }
 
